@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<div class="container container-fluid pt-5 ">
+
+    {% if product %}
+    <div class="row d-flex flex-row justify-content-between ">
+
+
+        <div class="col-md-5">
+            <div class="card text-center">
+                <div class="card-header">
+                    {{product.brand}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.head_name}}</h5>
+                    {% if product.picture %}
+                    <img src="{{product.picture.url }}" class="img-fluid" style="max-width: 400px;" alt="Ürün Resmi">
+
+                    {% else %}
+                    <img src="" class="img-fluid" style="max-width: 400px;" alt="Ürün Resmi">
+
+                    {% endif %}
+
+                    <p class="card-text">Ürün Barkodu: {{product.code}}</p>
+                    <a href="" class="btn btn-outline-primary">{{product.unit_price}} ₺</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{product.created_date}} tarihinde kaydedildi
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-6 ">
+
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Marka</th>
+                        <td>{{product.brand}}</td>
+                    </tr>
+                    <tr>
+                        <th>Başlık Adı</th>
+                        <td>{{product.head_name}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Kategori</th>
+                        <td>{{product.category}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Renk</th>
+                        <td>{{product.color}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>En</th>
+                        <td>{{product.width}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Dikilebilir En</th>
+                        <td>{{product.max_width}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Barkod</th>
+                        <td>{{product.code}}</td>
+
+                    </tr>
+
+                    <tr>
+                        <th>Birim Fiyat</th>
+                        <td class="text-primary">{{product.unit_price}} ₺</td>
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+
+            <a href="" class="btn btn-success ">Düzenle</a>
+            <a href="" class="btn btn-danger">Sil</a>
+            {% if variants %}
+            <hr class="m-5">
+
+            <p class="display-6 d-flex flex-row justify-content-center">Varyantlar:</p>
+            
+            <table class="table table-hover">
+                <thead>
+                    <th>Ürün ve Varyant Kodu</th>
+                    <th>Varyant Fiyatı</th>
+                </thead>
+                <tbody>
+                    {% for variant in variants %}
+                    <tr>
+                        <th>{{variant.product}}-{{variant.code}}</th>
+                        <td class="text-primary">{{variant.variant_unit_price}} ₺</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+
+            </table>
+
+            <p></p>
+            <p></p>
+
+            {% else %}
+            <p class="display-6 ms-auto">Seçili ürünün varyantı mevcut değildir.</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+
+    {% endif %}
+
+
+
+
+
+</div>
+
+{% endblock body %}

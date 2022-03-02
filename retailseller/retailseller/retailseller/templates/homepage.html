@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<!-- Contet -->
+
+<div class="mt-3 d-flex justify-content-md-center align-items-center flex-wrap p-5">
+
+
+
+<!-- Introduction to program -->
+<div class="col-lg-4 me-3 ">
+
+    <div class="card ms-auto shadow-lg p-3 mb-5 bg-body rounded " style="min-height: auto; ">
+        <div class="card-body d-flex flex-column ">
+          <h5 class="card-title text-center ">Retailer Seller Nedir ?</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center ">Basit Kullanımı</h6>
+          <p class="card-text flex-grow-1">Some quick example text to build on the card title and make up the bulk of the card's content.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+            p into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            
+          </p>
+          <button class="btn btn-outline-info align-self-center">Daha Fazlası</button>
+        </div>
+      </div>
+    
+
+
+</div>
+<!-- Introduction to program End -->
+
+<!-- 3 main things that we will do -->
+<div class="col-lg-4 ps-5 pe-5 pt-3 pb-3 text-light d-flex flex-column justify-content-center me-3" style="max-height: 700px;">
+
+  <div class="card border-secondary mb-3 shadow p-3 mb-5 bg-body rounded" style="min-width: 18rem;">
+    <div class="card-header text-dark fw-bold">Ölçü Alma</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-secondary mb-3 shadow p-3 mb-5 bg-body rounded" style="min-width: 18rem;">
+    <div class="card-header text-dark fw-bold">Sipariş Oluşturma</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card border-secondary mb-3 shadow p-3 mb-5 bg-body rounded" style="min-width: 18rem;">
+    <div class="card-header text-dark fw-bold">Ürün Fiyatlandırma</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  
+  
+
+</div>  
+<!-- 3 main things that we will do End-->
+<div class="card p-5 ">
+  {% load crispy_forms_tags%}
+  <img src="" class="card-img-top" alt="profile icon">
+  <form method="POST" class="d-flex flex-column align-items-center">
+
+    {%csrf_token%}
+
+    {{form | crispy}}
+
+    <button class="btn btn-success mt-3" type="submit" style="width: 100px;">Login</button>
+    <a href="#">Şifremi Unuttum</a>
+
+  </form>
+</div>
+
+
+
+
+
+
+
+
+<!-- Signup Login Page Design -->
+
+<!-- Signup Login Page Design End-->
+
+
+
+
+
+
+</div>
+<!-- Contet End -->
+
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RetailSeller</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'users:dashboard' %}">Dashboard</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sipariş İşlemleri
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Yeni Sipariş Oluştur</a></li>
+              <li><a class="dropdown-item" href="#">Mevcut Siparişler</a></li>
+              <li><a class="dropdown-item" href="#">Tamamlanmış Siparişler</a></li>
+              <li><a class="dropdown-item" href="#">İptal Edilen Siparişler</a></li>  
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Müşteri İşlemleri
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="{% url 'customer:customer'%}">Müşteriler</a></li>
+              <li><a class="dropdown-item" href="#">Aktif Siparişi Olan Müşteriler</a></li>
+              <li><a class="dropdown-item" href="#">Tamamlanmış Siparişi Olan  Müşteriler</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Kara Listedeki Müşteriler</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Ürün İşlemleri
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="#">Ürünler</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Yeni Ürün Ekle</a></li>
+              <li><a class="dropdown-item" href="#">Ürün Düzenleme</a></li>
+              <li><a class="dropdown-item" href="#">Tamamlanmış Siparişler</a></li>
+            </ul>
+          </li>      
+
+          <li class="nav-item ">
+            <a class="nav-link  active" href="#"  role="button" >Ölçüler</a>
+          </li>           
+
+        </ul>
+
+
+        
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Müşteri veya Ürün Ara" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit"> Ara</button>
+        </form>
+
+
+        <div class="ms-2 me-2 card border border-primary rounded-circle text text-primary" style="width: 3.5rem; height: 3.5rem;">
+          <a href="{% url 'users:profile' %}" class="mt-auto mb-auto me-auto ms-auto "><img src="" class="card-img-top mt-auto mb-auto me-auto ms-auto" alt="pic"></a>
+        </div>
+        
+        <div class="me-2 ms-2"><a href="{% url 'users:logout' %}" class="btn btn-outline-danger">Çıkış Yap</a></div>
+
+
+      </div>
+    </div>
+  </nav>

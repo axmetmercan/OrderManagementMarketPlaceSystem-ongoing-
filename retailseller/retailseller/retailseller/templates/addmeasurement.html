@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block body %}
+    
+<div class="container container-fluid">
+    {% load crispy_forms_tags %}
+
+    <form method="POST" class="container container-fluid col-md-6 pt-5">
+        {% csrf_token %}
+        {{form | crispy }}
+        <button type="submit" class="btn btn-outline-success">Kaydet</button>
+    </form>
+
+    {% if measurements %}
+        <div class="row pt-5 pb-5">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th>Ölçü Adı</th>
+                <th>Ölçü Alınma Tarihi</th>
+                <th>Durumu</th>
+                <th>Ölçüyü Gör</th>
+                <th>Sipariş Oluştur</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for measurement in measurements %}
+                <tr>
+                    <td>{{measurement.measurement_name}}</td>
+                    <td>{{measurement.date}}</td>
+                    <td>{{measurement.situation}}</td>
+                    <td><a href="{% url 'measurements:add_measure_to_customer' customer_id=customer.id measurement_id=measurement.id %}" class="btn btn-secondary">Ölçüyü Gör</a></td>
+                    <td><a href="#" class="btn btn-success">Sipariş Oluştur</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+   
+
+
+
+
+
+
+</div>
+
+    
+
+
+    
+{% endblock %}

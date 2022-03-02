@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container container fluid pt-3">
+    <p class="text text-center display-5">{{customer.name}} {{customer.surname}}</p>
+    <div class="row">
+        <div class="col-md-4 pt-3">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Adı</th>
+                        <td>{{customer.name}}</td> 
+                    </tr>
+                    <tr>
+                        <th>Soyadı</th>
+                        <td>{{customer.surname}}</td> 
+                    </tr>
+                    <tr>
+                        <th>Telefon Numarası</th>
+                        <td>{{customer.phone}}</td> 
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{customer.email}}</td> 
+                    </tr>
+                    <tr>
+                        <th>Tc</th>
+                        <td>{{customer.turkish_id}}</td> 
+                    </tr>
+                 
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-4 pt-3">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Fatura Tipi</th>
+                        <td>{{customer.invoince_type}}</td>
+                    </tr>
+                    <tr>
+                        <th>Vergi No</th>
+                        <td>{{customer.tax_id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fatura İsmi</th>
+                        <td>{{customer.tax_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fatura Soyismi</th>
+                        <td>{{customer.tax_surname}}</td>
+                    </tr>
+                    <tr>
+                        <th>Vergi Dairesi</th>
+                        <td>{{customer.tax_office}}</td>
+                    </tr>
+
+                  
+                    
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-md-4 pt-3">
+            <table class="table table-hover">
+                <tbody>
+                   
+                    <tr>
+                        <th>Ticari Unvan</th>
+                        <td>{{customer.tax_title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fatura Adresi</th>
+                        <td>{{customer.invoince_address}}</td>
+                    </tr>
+                                      
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+    <div class="row pt-5">
+        <table class="table table-hover">
+            <thead>
+                <th>#Sipariş No</th>
+                <th>Ölçü No</th>
+                <th>Sipariş Tarihi</th>
+                <th>Sipariş Tutarı</th>
+                <th>Sipariş Durumu</th>
+            </thead>
+            <tbody>
+                <th>#12345679</th>
+                <th>#123456789</th>
+                <td>27/05/2018</td>
+                <td>1750₺</td>
+                <th>Tamamlandı</th>
+            </tbody>
+        </table>
+
+
+    </div>
+
+     <!--Pagination-->
+     <div class="d-flex justify-content-evenly">
+        <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">2</span>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+</div>  
+    
+{% endblock %}

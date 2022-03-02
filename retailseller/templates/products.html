@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!--Container-->
+<div class="container container-fluid d-flex flex-row border border-primary" style="height:100%">
+    <div class="filter col-md-2 border border-warning me-3" style="height: 100%; background-color:blue; ">
+        <p>Filtreler Buraya Gelicek</p>
+    </div>
+    <div class="content col-md-10 d-flex flex-row flex-wrap justify-content-evenly border border-dark ">
+
+        {% if products %}
+
+        {% for product in products %}
+        <div class="card m-3" style='width:15rem;'>
+            <div class="card-header text text-center">{{product.brand}} / {{product.head_name}}</div>
+            {% if product.picture %}
+            <img src="{{product.picture.url}}" class="card-img-top img-fluid rounded" alt="Ürün Resmi Gelicek">
+
+            {% else %}
+            <img src="" class="card-img-top img-fluid rounded" alt="Ürün Resmi Gelicek">
+            {% endif %}
+            <div class="card-body d-flex flex-column align-items-center">
+                <div class="card-title mt-auto">{{product.code}}</div>
+                <div class="card-text">{{product.color}} </div>
+                <a href="{%url 'firms:details' product.id %}" class="btn btn-outline-success mt-auto">Detaylar</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock body %}

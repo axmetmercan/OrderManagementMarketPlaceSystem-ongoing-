@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+<div class="container-fluid container ">
+    <!--Customer Operation-->
+    <div class="row d-flex flex-row">
+        <div class="row ms-auto me-auto justify-content-center mt-5 col-md-6 ">
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <i class="d-flex justify-content-center bi bi-plus" style="font-size: 5rem;"></i>
+                    <h5 class="card-title d-flex justify-content-center mt-2">Firma Ekleme</h5>
+                    <a href="{% url 'firms:add_company' %}"
+                        class="card-link d-flex justify-content-center btn btn-success mt-5">Firma Ekle</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row ms-auto me-auto justify-content-center mt-5 col-md-6 ">
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <i class="d-flex justify-content-center bi bi-plus" style="font-size: 5rem;"></i>
+                    <h5 class="card-title d-flex justify-content-center mt-2">Başlık Ekleme</h5>
+                    <a href="{% url 'firms:add_company' %}"
+                        class="card-link d-flex justify-content-center btn btn-warning mt-5">Firma Başlığı Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {% if heads %}
+    <div class="row p-5">
+        <p class="h4 d-flex flex-row justify-content-center text-danger">Başlık Eklemeden Firma Tabloda Gözükmez!</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Firma Adı</th>
+                    <th>Başlık Adı</th>
+                    <th>Ekleyen Personel Adı</th>
+
+                    <th>Tarih</th>
+                    <th>Durumu</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for head in heads %}
+                    
+               
+                <tr>
+                    <td><a href="">{{head.firm}}</a></td>
+                    <td><a href="">{{head.name}}</a></td>
+                    <td>{{head.user}}</td>
+
+                    <td>{{head.created_date}}</td>
+                    <td><a href="" class="btn btn-info">Ürünleri Göster</a></td>
+                    <td> <a href="" class="btn btn-outline-danger">Sil<i class="bi bi-pencil-square"></i></a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!--Pagination-->
+    <div class="d-flex justify-content-evenly">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">2</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock body %}

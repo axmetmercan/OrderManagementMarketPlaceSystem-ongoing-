@@ -1,0 +1,185 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% load crispy_forms_tags%}
+
+
+
+ <!-- SignUp Form  -->
+ <div class="container container-fluid bg-success mt-5 p-5 border border-success rounded-3">
+
+    <div class="card border-3 border-warning rounded-pill">
+        <h2 class="text text-center p-3">Kayıt Ol</h2>
+        <div class="row pt-5">          
+            <form method="post">
+                {%csrf_token%}
+                
+                {{form|crispy}}
+
+                    
+                <button type="submit" class="btn btn-outline-dark m-auto mt-2" style="width: 150px;">Kayıt Ol</button>
+            </form>
+        </div>
+
+
+
+
+
+        <form>
+            <div class="row  ps-5 pe-5 pb-5 m-3 d-flex flex-row justify-content-center">
+
+                <div class="personal-info col-md-5 border border-2 rounded-3 border-warning me-3 shadow-lg p-3 mb-5 bg-body rounded">
+                    <h4 class="text text-center pt-2">Kişisel Bilgileriniz</h4>
+                        
+
+
+
+
+
+
+                    <div class="row pt-3">
+
+                        <div class="mb-3 col-lg-6">
+                            <label for="exampleInputEmail1" class="form-label">İsim:</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-lg-6">
+                            <label for="exampleInputEmail1" class="form-label">Soyisim</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+
+                        <div class="mb-3 col-md-7">
+                            <label for="exampleInputEmail1" class="form-label">Email Adres:</label>
+                            <input type="email" placeholder="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 col-md-5   ">
+                            <label for="exampleInputEmail1" class="form-label">Tel No:</label>
+                            <input type="email" placeholder="Cep Telefonu" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="exampleInputPassword1" class="form-label">Şifre</label>
+                            <input type="password" placeholder="şifre" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="exampleInputPassword1" class="form-label">Şifre Tekrarı</label>
+                            <input type="password" placeholder="şifre tekrarı" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="commerical-info  col-md-5 border-warning border border-2 rounded-3 shadow-lg p-3 mb-5 bg-body rounded">
+                    <h4 class="text text-center pt-2">Ticari Bilgileriniz</h4>
+
+                    <div class="row pt-3">
+
+                        <div class="mb-3 col-md-6">
+                            <label for="commericalname" class="form-label">İşletme Adı</label>
+                            <input type="name" placeholder="İşletme adınız" class="form-control">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="commericalpublishedname" class="form-label">Ticari Ünvanı</label>
+                            <input type="name" placeholder="Ticari ünvanınız" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-7">
+                            <label for="commerica" class="form-label">Adres</label>
+                            <textarea class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3 col-md-5">
+                            <label for="commerica" class="form-label">Vergi No</label>
+                            <input type="name" placeholder="Vergi No" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="commerica" class="form-label">İlçe</label>
+                            <input type="name" placeholder="ilçe" class="form-control">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="commerica" class="form-label">İl</label>
+                            <input type="name" placeholder="il" class="form-control">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="commerica" class="form-label">Vergi Dairesi</label>
+                            <input type="name" placeholder="vergi dairesi" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row m-auto col-md-6">
+                        <label class="form-label" for="vergiLevhası">Vergi Levhası</label>
+                        <input type="file" class="form-control" id="customFile" />
+
+                    </div>
+
+
+                    <div class="row d-flex flex-column align-items-center">
+
+                        <div class="mb-3 mt-3 form-check col-lg-auto">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Üyelik şartlarını ve sözleşmesini
+                                okudum kabul ediyorum.</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success col-md-6 mb-3">Kayıt Ol</button>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+        </form>
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+<!-- SignUp Form End -->
+
+
+
+{% endblock %}
+ 

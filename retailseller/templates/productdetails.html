@@ -73,6 +73,11 @@
                         <td>{{product.code}}</td>
 
                     </tr>
+                    <tr>
+                        <th>Varsayılan Varyant</th>
+                        <td>{{product.default_variant}}</td>
+
+                    </tr>
 
                     <tr>
                         <th>Birim Fiyat</th>
@@ -83,9 +88,12 @@
 
 
             </table>
+            <a href="{%url 'firms:add_variant' prodid=product.id %}" class="btn btn-primary "><i class="bi bi-plus-circle"></i> Varyant Ekle</a>
 
-            <a href="" class="btn btn-success ">Düzenle</a>
-            <a href="" class="btn btn-danger">Sil</a>
+            <a href="{%url 'firms:update_product' prodid=product.id %}" class="btn btn-success "><i class="bi bi-pencil-square"></i> Düzenle</a>
+
+            <a class="btn btn-danger" href="{% url 'firms:delete_product' prodid=product.id %}"><i class="bi bi-trash-fill"></i> Sil</a>
+            
             {% if variants %}
             <hr class="m-5">
 
@@ -99,8 +107,11 @@
                 <tbody>
                     {% for variant in variants %}
                     <tr>
-                        <th>{{variant.product}}-{{variant.code}}</th>
-                        <td class="text-primary">{{variant.variant_unit_price}} ₺</td>
+                        <th>{{variant.product}}-{{variant.variant_code}}</th>
+                        <td class="text-primary">{{variant.variant_unit_price}} ₺ 
+                           <a href="{% url 'firms:delete_variant' prodid=product.id variant_id=variant.id%}" class="badge btn btn-danger text-wrap d-flex justify-content-end flex-lg-nowrap" style="width: 3rem; text-decoration:none;"> <i class="bi bi-trash-fill"></i> Sil.</a>
+                          </td>
+                      
                     </tr>
                     {% endfor %}
 

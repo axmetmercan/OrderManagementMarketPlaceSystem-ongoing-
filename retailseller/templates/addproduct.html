@@ -5,23 +5,39 @@
 <div class="container container-fluid d-flex flex-row justify-content-center">
 
     <div class="col-md-6 p-5">
+      {% if form %}
+
+        <form action="" method="POST" enctype="multipart/form-data" >
+          {% csrf_token %}
+
+        {{form|crispy}}
+        <button type="Submit" name="submit" class="btn btn-primary mt-3">Kaydet</button>
+        <button type="submit" name="submintandnew" class="btn btn-success mt-3">Kaydet ve Yeni Varyant Ekle</button>
+      </form>
+      {% endif %}
+
+      {% if head_form %}
+
+      <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+
+        {{head_form|crispy}}
+        <button type="Submit" name="submit" class="btn btn-primary mt-3">Kaydet</button>
+      </form>
+      {% endif %}
 
 
-        {% if form and variants %}
-            {% csrf_token %}    
-            {{form | crispy }}
-            
-            <hr>
+      {% if brand_form %}
 
-            {% crispy variants%}
+      <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
 
-        {% elif form %}
-        {% csrf_token %}            
-        {{form | crispy }}
-            <hr>
-          
-
-        {% endif %}
+        {{brand_form|crispy}}
+        <button type="Submit" name="submit" class="btn btn-primary mt-3">Kaydet</button>
+        <button type="submit" name="submintandnew" class="btn btn-success mt-3">Kaydet ve Yeni Başlık Ekle</button>
+      </form>
+      {% endif %}
+     
 
     </div>
 

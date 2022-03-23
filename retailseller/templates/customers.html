@@ -2,92 +2,116 @@
 {% block body %}
 
 <div class="container-fluid container ">
-    <!--Customer Operation-->
-    <div class="row ms-auto me-auto justify-content-evenly mt-5 ">
+  <!--Customer Operation-->
+  <div class="row ms-auto me-auto justify-content-evenly mt-5 ">
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <i class="d-flex justify-content-center bi bi-plus" style="font-size: 5rem;"></i>
-            <h5 class="card-title d-flex justify-content-center mt-2">Müşteri Ekleme</h5>
-            <a href="{% url 'customer:add_customer' %}" class="card-link d-flex justify-content-center btn btn-success mt-5">Müşteri Ekle</a>
-            </div>
-        </div>
-       
-        <!-- 
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <i class="d-flex justify-content-center bi bi-pencil-square" style="font-size: 5rem;"></i>
-                <h5 class="card-title d-flex justify-content-center mt-2">Müşteri Düzenleme</h5>
-                <a href="#" class="card-link d-flex justify-content-center btn btn-warning mt-5">Müşteri Düzenle</a>
-            </div>
-        </div>
-        -->
-        
-
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <i class="d-flex justify-content-center bi bi-plus" style="font-size: 5rem;"></i>
+        <h5 class="card-title d-flex justify-content-center mt-2">Müşteri Ekleme</h5>
+        <a href="{% url 'customer:add_customer' %}"
+          class="card-link d-flex justify-content-center btn btn-success mt-5">Müşteri Ekle</a>
+      </div>
     </div>
 
-    <!--Customer Table-->
-    {% if customers %}
-    <div class="row p-5">
-      <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Adı</th>
-              <th>Soyadı</th>
-              <th>Email</th>
-              <th>Cep Telefonu</th>
-              <th>Tarih</th>
-              <th>Durumu</th>
-              <th>Düzenle</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for customer in customers %}
-            <tr>
-              <td><a href="{% url 'customer:customer_details' customer.id %}">{{customer.name}}</a></td>
-              <td>{{customer.surname}}</td>
-              <td>{{customer.email}}</td>
-              <td>{{customer.phone}}</td>
-              <td>27/10/2020</td>
-              <td><a href="{% url 'measurements:add_measurement' customer.id %}" class="btn btn-success">Ölçü Ekle</a></td>
-              <td> <a href="{% url 'customer:edit_customer' customer.id %}" class="btn btn-outline-warning">Düzenle<i class="bi bi-pencil-square"></i></a> </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+
   </div>
-       <!--Pagination-->
-    <div class="d-flex justify-content-evenly">
-        <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">2</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-     
-    {% endif %}
-    
 
-   
+  <!--Customer Table-->
+  {% if customers %}
+  <div class="row p-5">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Adı</th>
+          <th>Soyadı</th>
+          <th>Email</th>
+          <th>Cep Telefonu</th>
+          <th>Tarih</th>
+          <th>Durumu</th>
+          <th>Düzenle</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td><a href="{% url 'customer:customer_details' customer.id %}">{{customer.name}}</a></td>
+          <td>{{customer.surname}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>27/10/2020</td>
+          <td><a href="{% url 'measurements:add_measurement' customer.id %}" class="btn btn-success">Ölçüyü Gör</a></td>
+          <td> <a href="{% url 'customer:edit_customer' customer.id %}" class="btn btn-outline-warning">Düzenle<i
+                class="bi bi-pencil-square"></i></a> </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <!--Pagination-->
 
-  
-   
 
-        
+  {% if customers.has_other_pages %}
+  <div class="d-flex justify-content-evenly">
+    <nav aria-label="...">
+      <ul class="pagination">
+
+        {% if customers.has_previous %}
+        <li class="page-item "><a href="?page={{customers.previous_page_number}}"><span
+              class="page-link">Geri</span></a>
+
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Geri</span>
+        </li>
+        {% endif %}
+
+        {% for p_number in customers.paginator.page_range %}
+
+        {% if p_number == customers.number %}
+        <li class="page-item active" aria-current="page">
+          <a href="?page={{p_number}}"> <span class="page-link">{{p_number}}</span></a>
+
+          {% else %}
+        <li class="page-item " aria-current="page">
+          <a href="?page={{p_number}}"> <span class="page-link">{{p_number}}</span></a>
+
+          {% endif %}
+
+          {% endfor %}
+
+          {% if customers.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{customers.next_page_number}}">İleri</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">İleri</a>
+        </li>
+        {% endif %}
+
+
+
+
+      </ul>
+    </nav>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+
+
+
+
+
+
+
 
 </div>
 
 
 
-    
+
 {% endblock %}

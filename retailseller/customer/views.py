@@ -3,11 +3,23 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from .forms import CustomerForm
 from .models import CustomerInfo
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 # Create your views here.
 @login_required
 def customer(request):
     current_user = request.user
     customers = CustomerInfo.objects.filter(user = current_user)
+    page = request.GET.get('page',1)
+    paginator = Paginator(customers, 10)
+
+    try:
+        customers = paginator.page(page)
+    except PageNotAnInteger:
+        customers = paginator.page(1)
+    except EmptyPage:
+        customers = paginator.page(paginator.num_pages)
+
+
     context = {
         'customers':customers,
     }

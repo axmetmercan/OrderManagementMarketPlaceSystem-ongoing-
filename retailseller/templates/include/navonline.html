@@ -17,10 +17,10 @@
               Sipariş İşlemleri
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Yeni Sipariş Oluştur</a></li>
-              <li><a class="dropdown-item" href="#">Mevcut Siparişler</a></li>
-              <li><a class="dropdown-item" href="#">Tamamlanmış Siparişler</a></li>
-              <li><a class="dropdown-item" href="#">İptal Edilen Siparişler</a></li>  
+              <li><a class="dropdown-item disabled" href="#">Yeni Sipariş Oluştur</a></li>
+              <li><a class="dropdown-item disabled" href="#">Mevcut Siparişler</a></li>
+              <li><a class="dropdown-item disabled" href="#">Tamamlanmış Siparişler</a></li>
+              <li><a class="dropdown-item disabled" href="#">İptal Edilen Siparişler</a></li>  
             </ul>
           </li>
 
@@ -30,10 +30,10 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="{% url 'customer:customer'%}">Müşteriler</a></li>
-              <li><a class="dropdown-item" href="#">Aktif Siparişi Olan Müşteriler</a></li>
-              <li><a class="dropdown-item" href="#">Tamamlanmış Siparişi Olan  Müşteriler</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Kara Listedeki Müşteriler</a></li>
+              <li><a class="dropdown-item disabled" href="#">Aktif Siparişi Olan Müşteriler</a></li>
+              <li><a class="dropdown-item disabled" href="#">Tamamlanmış Siparişi Olan  Müşteriler</a></li>
+              <li><hr class="dropdown-divider disabled"></li>
+              <li><a class="dropdown-item disabled" href="#">Kara Listedeki Müşteriler</a></li>
             </ul>
           </li>
 
@@ -43,12 +43,10 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="{% url 'firms:allproducts' %}">Ürünler</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{%url 'firms:add_product' %}">Ürün Ekle</a></li>
-              <li><a class="dropdown-item" href="#">Ürün Düzenle</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'firms:companies' %}">Firmalar</a></li>
-              <li><a class="dropdown-item" href="#">Firma Ekle</a></li>
+              <li><a class="dropdown-item" href="{% url 'firms:add_company' %}">Firma Ekle</a></li>
               <li><a class="dropdown-item" href="#">Firma Düzenle</a></li>
 
 

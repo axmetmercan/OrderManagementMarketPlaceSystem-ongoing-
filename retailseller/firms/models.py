@@ -64,6 +64,7 @@ class Product(models.Model):
     brand = models.ForeignKey(Firm, on_delete=models.CASCADE, verbose_name='Firma adı', blank=True, null=True)
     head_name = models.ForeignKey(Head, on_delete=models.CASCADE, verbose_name = 'Başlık Adı', blank=True, null=True)
     code = models.CharField(max_length=100, verbose_name='Kodu', blank=False, null=False)
+    default_variant = models.CharField(max_length=100, verbose_name='Varsayılan Varyant Kodu', blank=False, null=False, default=1)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name="Kategorisi")
     color = models.CharField(max_length=100, verbose_name='Renk', blank=True, null=True)
     width = models.DecimalField(decimal_places=0, max_digits=3, verbose_name='En', blank=True, null=True)

@@ -1,17 +1,17 @@
 
-from dataclasses import field
+from dataclasses import field, fields
+from pyexpat import model
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from .models import Product, Variant
+from .models import Firm, Head, Product, Variant
 
 class AddProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
-    helper = FormHelper()
-    helper.add_input(Submit('submit', 'Kaydet', css_class='btn-success'))
+
 
 
 
@@ -20,6 +20,16 @@ class ProductVariants(forms.ModelForm):
         model = Variant
         fields = "__all__"
 
-    helper = FormHelper()
-    helper.add_input(Submit('submit', 'Kaydet', css_class = "btn-primary"))
-    helper.add_input(Submit('submit', 'Kaydet ve Başka Varyant Ekle', css_class = "btn-primary"))
+
+
+class FirmForm(forms.ModelForm):
+    class Meta:
+        model = Firm
+        fields = "__all__"
+        widgets = {'user':forms.HiddenInput()}
+
+class HeadForm(forms.ModelForm):
+    class Meta:
+        model = Head
+        fields = "__all__"
+        widgets = {'user': forms.HiddenInput()}
